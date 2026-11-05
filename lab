@@ -1,0 +1,169 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+void zadanie1(void)
+{
+    char c = '!';
+    int i = 2;
+    float f = 3.14f;
+    double d = 5e-12;
+
+    puts("=== Задание 1 ===");
+    printf("Начальные значения: c = %c, i = %d, f = %f, d = %e\n", c, i, f, d);
+
+    puts("Введите символ:");
+    scanf(" %c", &c);
+    puts("Введите целое число:");
+    scanf("%d", &i);
+    puts("Введите вещественное число (float):");
+    scanf("%f", &f);
+    puts("Введите вещественное число (double):");
+    scanf("%lf", &d);
+
+    printf("Введены значения: c = %c, i = %d, f = %f, d = %e\n", c, i, f, d);
+    puts("");
+}
+
+void zadacha1a(void)
+{
+    double x;
+    int whole;
+    double frac;
+
+    puts("=== Задача 1а ===");
+    puts("Введите вещественное число:");
+    scanf("%lf", &x);
+
+    whole = (int)x;
+    frac = x - whole;
+
+    printf("Целая часть: %d\n", whole);
+    printf("Дробная часть: %f\n", frac);
+    puts("");
+}
+
+void zadacha1b(void)
+{
+    char c;
+
+    puts("=== Задача 1б ===");
+    puts("Введите символ:");
+    scanf(" %c", &c);
+
+    printf("Символ %c: десятичный код %d, шестнадцатеричный код %X\n", c, (unsigned char)c, (unsigned char)c);
+    puts("");
+}
+
+void zadacha1v(void)
+{
+    int i;
+
+    puts("=== Задача 1в ===");
+    puts("Введите целое число i:");
+    scanf("%d", &i);
+
+    if (i == 0)
+    {
+        puts("Делить на 0 нельзя");
+    }
+    else
+    {
+        printf("1 / %d = %f\n", i, 1.0 / i);
+    }
+    puts("");
+}
+
+void zadanie2(void)
+{
+    int a = 11, b = 3;
+    int x;
+    float y;
+    double z;
+
+    puts("=== Задание 2 ===");
+    x = a / b;
+    y = a / b;
+    z = a / b;
+    printf("a = %d, b = %d\n", a, b);
+    printf("x (int)    = %d\n", x);
+    printf("y (float)  = %f\n", y);
+    printf("z (double) = %f\n", z);
+    puts("");
+}
+
+void zadanie2_6(void)
+{
+    int a = 11, b = 3;
+
+    puts("=== Задание 2, пункт 6: явное приведение типа ===");
+    printf("(float)a / b      = %f\n", (float)a / b);
+    printf("(double)a / b     = %f\n", (double)a / b);
+    printf("(float)(a / b)    = %f\n", (float)(a / b));
+    printf("(double)(a / b)   = %f\n", (double)(a / b));
+    printf("float,  15 знаков = %.15f\n", (float)a / b);
+    printf("double, 15 знаков = %.15f\n", (double)a / b);
+    puts("");
+}
+
+void zadanie3(void)
+{
+    int n, a;
+
+    puts("=== Задание 3 ===");
+    printf("Введите трёхзначное число: ");
+    scanf("%d", &n);
+
+    a = n < 0 ? -n : n;
+    if (a < 100 || a > 999)
+    {
+        puts("Это число не трёхзначное");
+        puts("");
+        return;
+    }
+
+    printf("Последняя цифра %d, первая - %d, сумма цифр %d, число наоборот - %03d\n",
+        a % 10, a / 100, a / 100 + a / 10 % 10 + a % 10, a % 10 * 100 + a / 10 % 10 * 10 + a / 100);
+    puts("");
+}
+
+void homework(void)
+{
+    int A, B;
+    int left;
+
+    puts("=== Домашнее задание === Вариант 9 ===");
+    printf("Введите два целых числа от датчиков traffic flow (A и B): ");
+    scanf("%d %d", &A, &B);
+
+    left = (A % 2 == 0 && B % 2 != 0) || (A % 2 != 0 && B % 2 == 0);
+
+    printf("Показать направление \"Налево\" (1 - да, 0 - нет): %d\n", left);
+    if (left)
+    {
+        puts("Знак показывает направление \"Налево\"");
+    }
+    else
+    {
+        puts("Знак не показывает направление \"Налево\"");
+    }
+    puts("");
+}
+
+int main(void)
+{
+    setlocale(LC_CTYPE, "rus");
+
+    zadanie1();
+    zadacha1a();
+    zadacha1b();
+    zadacha1v();
+    zadanie2();
+    zadanie2_6();
+    zadanie3();
+    homework();
+
+    system("pause");
+    return 0;
+}
